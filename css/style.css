@@ -361,6 +361,17 @@ a:focus {
   margin: 20px;
 }
 
+
+/* Curso */
+
+.curso_section p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #999;
+}
 .icons-container {
   background: #eee;
   display: flex;
