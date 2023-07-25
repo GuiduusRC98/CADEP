@@ -362,6 +362,14 @@ a:focus {
 }
 
 /* Login */
+
+#cuerpo_login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .login-general {
   width: 320px;
   height: 420px;
