@@ -367,7 +367,6 @@ a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .login-general {
