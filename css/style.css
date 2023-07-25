@@ -378,8 +378,8 @@ a:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .icons-container .icons {
