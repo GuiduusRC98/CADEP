@@ -367,40 +367,30 @@ a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Ocupar todo el alto de la pantalla */
-  margin-top: 100px; /* Espacio entre el header y #cuerpo_login */
-  margin-bottom: 100px; /* Espacio entre #cuerpo_login y el footer */
 }
 
-/* Estilo para el formulario de login */
 .login-general {
   width: 320px;
+  height: 420px;
   background: #794827;
   color: #dbd8d6;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
   box-sizing: border-box;
   padding: 70px 30px;
   border-radius: 5%;
 }
 
-/* Posicionar el formulario de login en el centro de #cuerpo_login */
-.login-general {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Logo del formulario de login */
 .login-general .login-logo {
   width: 81px;
   height: 100px;
   position: absolute;
   top: -50px;
-  left: 50%; /* Centrar horizontalmente */
-  transform: translateX(-50%);
+  left: calc(54% - 50px);
 }
 
-/* Resto de estilos (sin cambios) */
 .login-general h1 {
   margin: 0;
   padding: 0 0 20px;
