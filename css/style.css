@@ -458,39 +458,28 @@ a:focus {
 }
 
 /* Tienda */
-main.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .products .box-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  max-width: 1200px; /* Set a maximum width to limit the product container */
-  margin: 0 auto; /* To center the products container */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .products .box {
-  flex: 0 0 calc(33.33% - 1.5rem); /* This sets the width of each product box to one-third of the container width with some space in between */
-  margin-bottom: 1.5rem; /* Add some space between products */
-}
-
-.products .box .image img {
-  max-width: 100%; /* Make sure the product images don't exceed their container */
-  height: auto;
-}
-
-.products .box-container .box {
-  flex: 1 1 30rem;
+  flex: 0 0 calc(33.33% - 1.5rem);
+  margin-bottom: 1.5rem;
   box-shadow: 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
-  position: relative;
 }
 
-.products .box-container .box .discount {
+.products .box .image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.products .box .discount {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -502,23 +491,23 @@ main.row {
   border-radius: 0.5rem;
 }
 
-.products .box-container .box .image {
+.products .box .image {
   position: relative;
   text-align: center;
   padding-top: 2rem;
   overflow: hidden;
 }
 
-.products .box-container .box .image img {
+.products .box .image img {
   height: 25rem;
   object-fit: cover;
 }
 
-.products .box-container .box:hover .image img {
+.products .box:hover .image img {
   transform: scale(1.1);
 }
 
-.products .box-container .box .image .icons {
+.products .box .image .icons {
   position: absolute;
   bottom: -7rem;
   left: 0;
@@ -526,52 +515,52 @@ main.row {
   display: flex;
 }
 
-.products .box-container .box:hover .image .icons {
+.products .box:hover .image .icons {
   bottom: 0;
 }
 
-.products .box-container .box .image .icons a {
+.products .box .image .icons a {
   height: 5rem;
   line-height: 5rem;
   font-size: 2rem;
-  width: 50%;
+  width: 33.33%;
   background: #eeb469;
   color: #fff;
 }
 
-.products .box-container .box .image .icons .cart-btn {
+.products .box .image .icons .cart-btn {
   border-left: 0.1rem solid #fff7;
   border-right: 0.1rem solid #fff7;
-  width: 100%;
 }
 
-.products .box-container .box .image .icons a:hover {
+.products .box .image .icons a:hover {
   background: #333;
 }
 
-.products .box-container .box .content {
+.products .box .content {
   padding: 2rem;
   text-align: center;
 }
 
-.products .box-container .box .content h3 {
+.products .box .content h3 {
   font-size: 2.5rem;
   color: #333;
 }
 
-.products .box-container .box .content .price {
+.products .box .content .price {
   font-size: 2.5rem;
   color: #eeb469;
   font-weight: bolder;
   padding-top: 1rem;
 }
 
-.products .box-container .box .content .price span {
+.products .box .content .price span {
   font-size: 1.5rem;
   color: #999;
   font-weight: lighter;
   text-decoration: line-through;
 }
+
 
 /* boton whastapp */
 .whatsapp-button {
