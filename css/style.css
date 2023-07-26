@@ -470,10 +470,7 @@ a:focus {
   max-height: 320px;
 }
 
-.card .card-img-top {
-  width: 320px;
-  height: 320px;
-}
+
 
 .card-img-top img{
   object-fit: cover;
