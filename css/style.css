@@ -471,18 +471,36 @@ a:focus {
 
 .producto {
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 100px);
+  margin: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .descuento {
   position: absolute;
+  top: 10px;
+  /* Ajustamos la posición superior del descuento para que esté a la izquierda */
+  left: 10px;
+  /* Ajustamos la posición izquierda del descuento para que esté a la izquierda */
   padding: 0.5rem 1rem;
   font-size: 2rem;
   color: #483c2e;
   background: #eeb469;
 }
 
+.producto img {
+  height: auto;
+  object-fit: cover;
+}
+
+
+
 .buy-button {
-  display: none; /* Ocultamos inicialmente el botón de compras */
+  display: none;
+  /* Ocultamos inicialmente el botón de compras */
   width: 100%;
   padding: 5px;
   background-color: #eeb469;
@@ -490,7 +508,8 @@ a:focus {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  transition: display 0s 0.3s; /* Retrasamos la transición del botón */
+  transition: display 0s 0.3s;
+  /* Retrasamos la transición del botón */
 }
 
 .producto:hover .buy-button {
@@ -507,7 +526,7 @@ a:focus {
 
 .section-tienda p {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
 .section-tienda h6 {
