@@ -467,13 +467,12 @@ a:focus {
 
 .card a {
   text-decoration: none;
-  max-height: 320px;
 }
 
-
-
-.card-img-top img{
-  object-fit: cover;
+.card .card-img-top {
+  width: 320px;
+  height: 320px;
+  max-height: 320px;
 }
 
 .card:hover {
