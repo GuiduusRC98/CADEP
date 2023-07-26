@@ -524,7 +524,7 @@ body {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  color: #818181;
+  color: #794827;
 }
 
 .el-wrapper:hover .add-to-cart {
@@ -602,7 +602,7 @@ body {
 .h-bg .h-bg-inner {
   width: 50%;
   height: 100%;
-  background-color: #464646;
+  background-color: #794827;
 }
 
 .info-inner {
@@ -630,14 +630,14 @@ body {
 .info-inner .p-name {
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
-  color: #252525;
+  color: #794827;
 }
 
 .info-inner .p-company {
   font-family: 'Lato', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
-  color: #8c8c8c;
+  color: #ffffff;
 }
 
 .a-size {
@@ -660,7 +660,7 @@ body {
 }
 
 .a-size .size {
-  color: #252525;
+  color: #794827;
 }
 
 .cart {
