@@ -606,6 +606,7 @@ body {
 }
 
 .info-inner {
+  background: linear-gradient(to top, #eeb469, transparent);
   -webkit-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
   -moz-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
   -o-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
