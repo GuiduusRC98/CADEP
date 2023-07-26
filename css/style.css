@@ -457,6 +457,44 @@ a:focus {
   color: white;
 }
 
+/* Tienda */
+.card {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
+  /* Media queries */
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card .card-img-top {
+  width: 320px;
+  height: 320px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+}
+
+.boton-compras {
+  background-color: #4caf50;
+  border: 1px transparent;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.boton-compras:hover {
+  background-color: #bae4bb;
+  color: white;
+}
+
 /* boton whastapp */
 .whatsapp-button {
   position: fixed;
