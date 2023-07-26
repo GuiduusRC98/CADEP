@@ -458,7 +458,62 @@ a:focus {
 }
 
 /* Tienda */
+.section-tienda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  align-content: center;
+  width: 100%;
+  overflow: auto;
+  flex-direction: row;
+}
 
+.producto {
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+.descuento {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  color: #483c2e;
+  background: #eeb469;
+}
+
+.buy-button {
+  display: none; /* Ocultamos inicialmente el botón de compras */
+  width: 100%;
+  padding: 5px;
+  background-color: #eeb469;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: display 0s 0.3s; /* Retrasamos la transición del botón */
+}
+
+.producto:hover .buy-button {
+  display: block;
+}
+
+.buy-button:hover {
+  background-color: #483c2e;
+}
+
+.section-tienda div {
+  margin: 50px;
+}
+
+.section-tienda p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.section-tienda h6 {
+  text-align: center;
+  font-size: 2rem;
+}
 
 /* boton whastapp */
 .whatsapp-button {
