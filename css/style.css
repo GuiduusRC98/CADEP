@@ -458,15 +458,28 @@ a:focus {
 }
 
 /* Tienda */
-.products {
-  padding: 30%;
+main.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .products .box-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  max-width: 1200px; /* Set a maximum width to limit the product container */
+  margin: 0 auto; /* To center the products container */
+}
 
+.products .box {
+  flex: 0 0 calc(33.33% - 1.5rem); /* This sets the width of each product box to one-third of the container width with some space in between */
+  margin-bottom: 1.5rem; /* Add some space between products */
+}
+
+.products .box .image img {
+  max-width: 100%; /* Make sure the product images don't exceed their container */
+  height: auto;
 }
 
 .products .box-container .box {
@@ -484,7 +497,6 @@ a:focus {
   padding: 0.7rem 1rem;
   font-size: 2rem;
   color: #eeb469;
-  ;
   background: rgba(255, 51, 153, 0.05);
   z-index: 1;
   border-radius: 0.5rem;
