@@ -458,11 +458,15 @@ a:focus {
 }
 
 /* Tienda */
+.products {
+  padding: 30%;
+}
 
 .products .box-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+
 }
 
 .products .box-container .box {
