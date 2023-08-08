@@ -482,9 +482,7 @@ a:focus {
 .descuento {
   position: absolute;
   top: 10px;
-  /* Ajustamos la posición superior del descuento para que esté a la izquierda */
   left: 10px;
-  /* Ajustamos la posición izquierda del descuento para que esté a la izquierda */
   padding: 0.5rem 1rem;
   font-size: 2rem;
   color: #483c2e;
@@ -492,15 +490,15 @@ a:focus {
 }
 
 .producto img {
-  height: auto;
+  height: 300px;
+  width: 300px;
   object-fit: cover;
 }
 
 
 
 .buy-button {
-  display: none;
-  /* Ocultamos inicialmente el botón de compras */
+  opacity: 0;
   width: 100%;
   padding: 5px;
   background-color: #eeb469;
@@ -508,23 +506,24 @@ a:focus {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  transition: display 0s 0.3s;
-  /* Retrasamos la transición del botón */
+  transition: opacity 0.3s ease;
 }
 
 .producto:hover .buy-button {
-  display: block;
+  opacity: 1;
 }
 
 .buy-button:hover {
   background-color: #483c2e;
+  transition: background-color 0.3s ease;
 }
+
 
 .section-tienda div {
-  margin: 50px;
+  margin: 5px;
 }
 
-.section-tienda p {
+.producto-inferior p {
   text-align: center;
   font-size: 1.8rem;
 }
@@ -737,3 +736,4 @@ a:focus {
   background-color: #eeb469;
   /* Cambia el color de la línea según tus preferencias */
 }
+
