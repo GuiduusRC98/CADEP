@@ -360,6 +360,12 @@ a:focus {
   border-bottom: 2px solid #eeb469;
   margin: 20px;
 }
+.ligas-img img{
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+  margin-left: 20px;
+}
 
 /* Login */
 
@@ -570,6 +576,20 @@ a:focus {
 .curso_section p {
   flex: 1 1 50%;
   display: flex;
+  padding: 80px;
+  margin: 0 180px 0 180px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #999;
+}
+.curso_section ul {
+  flex: 1 1 50%;
+  display: flex;
+  
+  padding: 0px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -598,18 +618,15 @@ a:focus {
 .icons-container .icons img {
   height: 5rem;
   margin-right: 2rem;
+  object-fit: fill;
 }
 
 .icons-container .icons h3 {
   color: #333;
-  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   font-size: 1.5rem;
 }
 
-.icons-container .icons span {
-  color: #999;
-  font-size: 1.3rem;
-}
 
 
 
