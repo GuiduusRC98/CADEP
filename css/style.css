@@ -479,6 +479,8 @@ a:focus {
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
   width: calc(33.33% - 100px);
   margin: 50px;
+  height: 512px;
+  max-height: 512px;
   position: relative;
   display: flex;
   flex-direction: column;
