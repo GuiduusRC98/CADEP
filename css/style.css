@@ -483,13 +483,6 @@ a:focus {
 .contact_section .detail-box p {
   margin-top: 5px;
 }
-
-.contact_section .contact-form h5 {
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-}
-
 .contact_section .contact-form .top_input {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -559,6 +552,11 @@ a:focus {
   background-color: #483c2e;
   color: #ffffff;
 }
+.contact_section {
+  background-color: #ebebebb0;
+}
+
+
 /** tienda**/
 .card {
 	animation-duration: 1s;
