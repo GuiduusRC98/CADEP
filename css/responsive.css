@@ -119,6 +119,7 @@
   .info_section .info_post .post_box .img-box {
     margin-right: 0;
     margin-bottom: 10px;
+    display: none;
   }
 }
 
