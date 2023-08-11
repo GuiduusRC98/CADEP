@@ -565,7 +565,8 @@ a:focus {
   flex: 1 1 20rem;
 }
 .image img {
-  width: 100%;
+  width: 200px;
+  height: auto;
 }
 
 
