@@ -466,7 +466,6 @@ a:focus {
 
 /* Tienda */
 /* contacto */
-/* contact section */
 .contact_section .heading_container {
   margin-bottom: 25px;
 }
@@ -547,8 +546,8 @@ a:focus {
 
 .contact_section .contact-form .btn-box button {
   display: inline-block;
-  background-color: #82c419;
-  color: #ffffff;
+  background-color: #eeb469;
+  color: #333;
   padding: 10px 65px;
   border-radius: 0;
   -webkit-transition: all 0.3s;
@@ -557,7 +556,8 @@ a:focus {
 }
 
 .contact_section .contact-form .btn-box button:hover {
-  background-color: #649713;
+  background-color: #483c2e;
+  color: #ffffff;
 }
 
 /* Curso */
