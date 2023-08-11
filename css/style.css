@@ -559,8 +559,25 @@ a:focus {
   background-color: #483c2e;
   color: #ffffff;
 }
-/** our protien section **/
+/** tienda**/
+.card {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-name: fadeInUp;
+}
 
+.card a {
+	text-decoration: none;
+}
+
+.card .card-img-top {
+	width: 320px;
+	height: 320px;
+}
+
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+}
 
 .boton-compras {
   background-color: #4caf50;
