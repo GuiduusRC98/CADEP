@@ -559,7 +559,48 @@ a:focus {
   background-color: #483c2e;
   color: #ffffff;
 }
+/** our protien section **/
 
+.protien_main {
+  padding-top: 80px;
+  padding-bottom: 50px;
+  background-color: #f8f8f8;
+  position: relative;
+}
+
+.protien_main .titlepage h2 {
+  padding-left: 40px;
+  text-align: left;
+}
+
+.protien {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.protien figure {
+  margin: 0;
+}
+
+.protien figure img {
+  width: 100%;
+}
+
+.protien h3 {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 25px;
+  padding-bottom: 15px;
+  color: #262626;
+  padding-top: 8px;
+}
+
+.protien span {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #262626;
+}
 /* Curso */
 
 .curso_section p {
