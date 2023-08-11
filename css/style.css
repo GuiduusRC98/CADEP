@@ -466,105 +466,29 @@ a:focus {
 
 /* Tienda */
 /* contacto */
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo-form {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
 .form-container {
-  max-width: 700px;
-  margin: 30px;
-  background-color: #fff;
-  padding: 30px;
-  display: flex;
-  flex: 1 1 50%;
-  border-left: 5px solid #eeb469;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-.form-container .form .input {
-  color: #c7c7c7;
-  width: 100%;
-  background-color: white;
-  border: none;
-  outline: none;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  transition: all 0.2s ease-in-out;
-  border-left: 1px solid transparent;
-}
-
-.form-container .form .input:focus {
-  border-left: 5px solid #eeb469;
-}
-
-.form-container .form .textarea {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background-color: white;
-  color: #eeb469;
-  font-weight: bold;
-  resize: none;
-  max-height: 150px;
-  margin-bottom: 20px;
-  border-left: 1px solid transparent;
-  transition: all 0.2s ease-in-out;
-}
-
-.form-container .form .textarea:focus {
-  border-left: 5px solid #eeb469;
-}
-
-.form-container .form .button-container {
-  display: flex;
-  gap: 10px;
-}
-
-.form-container .form .button-container .send-button {
-  flex-basis: 70%;
-  background: #eeb469;
-  padding: 10px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  border: 1px solid transparent;
-  transition: all 0.2s ease-in-out;
-}
-
-.form-container .form .button-container .send-button:hover {
-  background: transparent;
-  border: 1px solid #eeb469;
-  color: #eeb469;
-}
-
-.form-container .form .button-container .reset-button-container {
-  filter: drop-shadow(1px 1px 0px #eeb469);
-  flex-basis: 30%;
-}
-
-.form-container .form .button-container .reset-button-container .reset-button {
-  position: relative;
-  text-align: center;
-  padding: 10px;
-  color: #eeb469;
-  font-weight: bold;
-  background: white;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  transition: all 0.2s ease-in-out;
-}
-
-.form-container .form .button-container .reset-button-container .reset-button:hover {
-  background: #eeb469;
-  color: white;
-}
-
-.image {
-  display: flex;
-  flex: 1 1 75%;
-}
-
-.image img {
-  width: 200px;
-  height: auto;
+.form-group {
+  margin-bottom: 15px;
 }
 
 
