@@ -157,13 +157,13 @@
                         ENVIANOS UN MENSAJE
                       </h2>
                     </div>
-                    <form action="">
-                      <input type="text" placeholder="Nombre completo" />
+                    <form action="procesar_formulario.php" method="POST">
+                      <input type="text" placeholder="Nombre completo" id="nombre" name="nombre" required/>
                       <div class="top_input">
-                        <input type="email" placeholder="Email" />
-                        <input type="text" placeholder="Numero de telefono" />
+                        <input type="email" placeholder="Email" id="email" name="email" required/>
+                        <input type="number" placeholder="Numero de telefono" id="telefono" name="telefono" required/>
                       </div>
-                      <input type="text" placeholder="Mensaje..." class="message_input" />
+                      <input type="text" placeholder="Mensaje..." class="message_input" id="mensaje" name="mensaje" required/>
                       <div class="btn-box">
                         <button>
                           Enviar

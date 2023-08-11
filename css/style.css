@@ -571,8 +571,7 @@ a:focus {
 }
 
 .card .card-img-top {
-	width: 320px;
-	height: 320px;
+  object-fit: cover;
 }
 
 .card:hover {
