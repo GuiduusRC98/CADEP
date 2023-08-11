@@ -120,10 +120,6 @@
     margin-right: 0;
     margin-bottom: 10px;
   }
-
-  .img-box  img{
-    display: none;
-  }
 }
 
 @media (max-width: 576px) {

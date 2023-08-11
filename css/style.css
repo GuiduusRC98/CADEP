@@ -464,78 +464,61 @@ a:focus {
 }
 
 /* Tienda */
+/* contacto */
 
-/* Tienda */
-.section-tienda {
+.contact .row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  align-content: center;
-  width: 100%;
-  overflow: auto;
-  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
-.producto {
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
-  width: calc(33.33% - 100px);
-  margin: 50px;
-  height: 512px;
-  max-height: 512px;
-  position: relative;
+.form-container {
+  flex: 1 1 50%;
+}
+.form-container form {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.descuento {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 0.5rem 1rem;
-  font-size: 2rem;
-  color: #483c2e;
-  background: #eeb469;
+.form-container .box {
+  margin-bottom: 1rem;
 }
 
-.producto img {
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
+.contact .row form {
+  flex: 1 1 20rem;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 0.5rem;
 }
 
+.contact .row .image {
+  flex: 1 1 20rem;
+}
 
-
-.buy-button {
-  opacity: 0;
+.contact .row .image img {
   width: 100%;
-  padding: 5px;
-  background-color: #eeb469;
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
 }
 
-.producto:hover .buy-button {
-  opacity: 1;
+.contact .row form .box {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.7rem;
+  color: #333;
+  text-transform: none;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  margin: 0.7rem 0;
+}
+.contact .row form .box:focus {
+  border-color: #eeb469;
 }
 
-.buy-button:hover {
-  background-color: #483c2e;
-  transition: background-color 0.3s ease;
-}
-
-
-.section-tienda div {
-  margin: 5px;
-}
-
-.producto-inferior p {
-  text-align: center;
-  font-size: 1.8rem;
+.contact .row form textarea {
+  height: 15rem;
+  resize: none;
 }
 
 .section-tienda h6 {
