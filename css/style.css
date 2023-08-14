@@ -566,8 +566,12 @@ a:focus {
 
 .card a {
 	text-decoration: none;
+  color: initial;
 }
 
+.card a:hover {
+  text-decoration: initial;
+}
 .card .card-img-top {
   object-fit: cover;
 }
@@ -816,4 +820,9 @@ a:focus {
 
 .whatsapp-button a i {
   font-size: 24px;
+}
+
+/* cards noticias */
+.text-muted i {
+  margin: 0 10px;
 }
