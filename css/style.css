@@ -472,8 +472,8 @@ a:focus {
 
 .contact_section .row {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .contact_section .detail-box {
@@ -483,13 +483,14 @@ a:focus {
 .contact_section .detail-box p {
   margin-top: 5px;
 }
+
 .contact_section .contact-form .top_input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .contact_section .contact-form .top_input input {
@@ -504,7 +505,7 @@ a:focus {
   border: none;
   outline: none;
   -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .contact_section .contact-form input.message_input {
@@ -532,8 +533,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-top: 35px;
 }
 
@@ -552,6 +553,7 @@ a:focus {
   background-color: #483c2e;
   color: #ffffff;
 }
+
 .contact_section {
   background-color: #ebebebb0;
 }
@@ -559,13 +561,13 @@ a:focus {
 
 /** tienda**/
 .card {
-	animation-duration: 1s;
-	animation-fill-mode: both;
-	animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
 }
 
 .card a {
-	text-decoration: none;
+  text-decoration: none;
   color: black;
 }
 
@@ -573,12 +575,13 @@ a:focus {
   text-decoration: none;
   color: black;
 }
+
 .card .card-img-top {
   object-fit: cover;
 }
 
 .card:hover {
-	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
 
 .boton-compras {
@@ -597,6 +600,7 @@ a:focus {
   background-color: #bae4bb;
   color: white;
 }
+
 /* Curso */
 
 .curso_section p {
@@ -826,4 +830,37 @@ a:focus {
 /* cards noticias */
 .text-muted i {
   margin: 0 10px;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+.carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding: 10px;
+}
+
+.carousel-caption h3 {
+  font-size: 20px;
+  color: black;
+}
+
+.carousel-caption p {
+  font-size: 16px;
+  color: black;
 }
