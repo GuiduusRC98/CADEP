@@ -832,12 +832,13 @@ a:focus {
   margin: 0 10px;
 }
 
-.carousel-inner {
+.carousel {
   max-width: 1280px;
   max-height: 720px;
+  position: relative;
 }
 
-.carousel-inner::before {
+.carousel::before {
   content: '';
   display: block;
   position: absolute;
