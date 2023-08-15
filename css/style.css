@@ -842,9 +842,8 @@ a:focus {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
   z-index: 1;
 }
-.carousel-inner::before img{
+.carousel-item img{
   object-fit: cover;
-  margin: 0 120px 0 120px;
 }
 
 .max-inicio {
