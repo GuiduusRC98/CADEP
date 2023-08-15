@@ -832,8 +832,25 @@ a:focus {
   margin: 0 10px;
 }
 
-.carrusel {
+.carousel-inner {
   max-width: 1280px;
   max-height: 720px;
+}
+
+.carousel-inner::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  z-index: 1;
+}
+
+.carousel-caption {
+  background: none;
+  color: white;
+  z-index: 2;
 }
