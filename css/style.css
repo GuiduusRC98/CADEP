@@ -860,3 +860,7 @@ a:focus {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+#carouselExample{
+  margin-left: 800px;
+}
