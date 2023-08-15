@@ -838,7 +838,9 @@ a:focus {
   top: 0;
   left: 0;
   width: 100%;
+  margin: 0 120px 0 120px;
   height: 100%;
+  object-fit: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
   z-index: 1;
 }
