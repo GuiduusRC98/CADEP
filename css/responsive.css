@@ -58,9 +58,6 @@
   .info_section .info_main_row>div {
     margin-bottom: 25px;
   }
-  .img-box{
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -165,25 +162,21 @@
 }
 
 @media (max-width: 480px) {
-  .detail-box h1 {
-    font-size: 3rem;
+  .slider_section .detail-box h1 {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 420px) {
-  .detail-box h1 {
+  .slider_section .detail-box h1 {
     font-size: 3rem;
   }
 }
 
 @media (max-width: 376px) {
   .slider_section .detail_box h1 {
-    font-size: 2.5rem;
-  }
-  .detail-box h1 {
-    font-size: 3rem;
-  }
-  .carousel-caption p {
+    font-size: 1rem;
+  }arousel-caption p {
     display: none;
   }
 }
