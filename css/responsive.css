@@ -164,15 +164,23 @@
   }
 }
 
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+  .detail-box h1 {
+    font-size: 3rem;
+  }
+}
 
-@media (max-width: 420px) {}
+@media (max-width: 420px) {
+  .detail-box h1 {
+    font-size: 3rem;
+  }
+}
 
 @media (max-width: 376px) {
   .slider_section .detail_box h1 {
     font-size: 2.5rem;
   }
-  .detail-boxh1 {
+  .detail-box h1 {
     font-size: 3rem;
   }
   .carousel-caption p {
