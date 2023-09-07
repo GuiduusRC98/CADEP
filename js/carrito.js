@@ -49,18 +49,15 @@ class CarritoCompraCADEP {
     }
 
     agregar = (producto) => {
-        // Verificar si el producto ya está en el carrito
         const productoExistente = this.listaDeCompras.find(productoAumento => productoAumento.id === producto.id);
 
         if (productoExistente) {
-            // Si el producto ya está en el carrito, aumenta la cantidad en 1
             productoExistente.cantidad += 1;
         } else {
-            // Si el producto no está en el carrito, agrégalo con cantidad 1
+            producto.cantidad = 1;
             this.listaDeCompras.push(producto);
         }
     }
-
 
     guardarEnStorage() {
         let listaDeComprasJSON = JSON.stringify(this.listaDeCompras);
@@ -74,6 +71,7 @@ class CarritoCompraCADEP {
         if (listaCarritoJS) {
             listaCarritoJS.forEach(producto => {
                 let nuevoProducto = new Producto(producto.id, producto.nombre, producto.precio, producto.descripcionProducto, producto.img);
+                nuevoProducto.cantidad = producto.cantidad; 
                 listaAux.push(nuevoProducto);
             });
             this.listaDeCompras = listaAux;
@@ -148,10 +146,9 @@ class ProductController {
 }
 
 const carrito = new CarritoCompraCADEP();
-const cp = new ProductController();
-
-carrito.recuperarStorage();
+carrito.recuperarStorage(); 
 carrito.mostrarEnCarrito();
 
+const cp = new ProductController();
 cp.updateProduct();
 cp.mostrar();
