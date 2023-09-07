@@ -1,11 +1,21 @@
 class Producto {
-    constructor(id, nombre, precio, descripcionProducto, img) {
+    constructor(id, nombre, precio, descripcionProducto, img, cantidad=1) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcionProducto = descripcionProducto;
-        this.cantidad = 1;
+        this.cantidad = cantidad;
         this.img = img;
+    }
+
+    anadirCantidad(){
+        this.cantidad++
+    }
+
+    quitarCantidad(){
+        if(this.cantidad >1){
+            this.cantidad--
+        }
     }
 
     descripcionCarrito() {
@@ -18,7 +28,11 @@ class Producto {
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">${this.nombre}</h5>
-                        <p class="card-text">Cantidad: ${this.cantidad}</p>
+                        <p class="card-text">Cantidad: 
+                        <button class="btn btn-orange" id="desminuir-${this.id}"><i class="fa-solid fa-minus"></i></button>
+                        ${this.cantidad}
+                        <button class="btn btn-orange" id="aumentar-${this.id}"><i class="fa-solid fa-plus"></i></button>
+                        </p>
                         <p class="card-text">Precio: $${this.precio}</p>
                         <button class="btn btn-danger" id="ep-${this.id}">
                             <i class="fas fa-times"></i> Eliminar
@@ -52,10 +66,11 @@ class CarritoCompraCADEP {
         const productoExistente = this.listaDeCompras.find(productoAumento => productoAumento.id === producto.id);
 
         if (productoExistente) {
-            productoExistente.cantidad += 1;
+            productoExistente.anadirCantidad()
         } else {
-            producto.cantidad = 1;
-            this.listaDeCompras.push(producto);
+            if(producto instanceof Producto){
+                this.listaDeCompras.push(producto)
+            }
         }
     }
 
@@ -70,8 +85,7 @@ class CarritoCompraCADEP {
         let listaAux = [];
         if (listaCarritoJS) {
             listaCarritoJS.forEach(producto => {
-                let nuevoProducto = new Producto(producto.id, producto.nombre, producto.precio, producto.descripcionProducto, producto.img);
-                nuevoProducto.cantidad = producto.cantidad; 
+                let nuevoProducto = new Producto(producto.id, producto.nombre, producto.precio, producto.descripcionProducto, producto.img, producto.cantidad);
                 listaAux.push(nuevoProducto);
             });
             this.listaDeCompras = listaAux;
@@ -82,13 +96,35 @@ class CarritoCompraCADEP {
         let total = 0;
         this.listaDeCompras.forEach(producto => {
             total += producto.precio * producto.cantidad;
-        });
+        })
         return total;
     }
 
     eliminar(productoEliminar){
         let indice = this.listaDeCompras.findIndex(producto => producto.id == productoEliminar.id)
         this.listaDeCompras.splice(indice,1)
+    }
+
+    aumentarCantidadProducto() {
+        this.listaDeCompras.forEach(producto => {
+            const btn_aumentar = document.getElementById(`aumentar-${producto.id}`);
+            btn_aumentar.addEventListener("click", () => {
+                producto.anadirCantidad();
+                this.guardarEnStorage();
+                this.mostrarEnCarrito();
+            });
+        });
+    }
+    
+    eliminarCantidadProducto() {
+        this.listaDeCompras.forEach(producto => {
+            const btn_disminuir = document.getElementById(`desminuir-${producto.id}`);
+            btn_disminuir.addEventListener("click", () => {
+                producto.quitarCantidad();
+                this.guardarEnStorage();
+                this.mostrarEnCarrito();
+            });
+        });
     }
 
     mostrarEnCarrito() {
@@ -98,17 +134,25 @@ class CarritoCompraCADEP {
             contenedor_carrito.innerHTML += producto.descripcionCarrito();
         })
 
+        this.eliminarEvento()
+        this.eliminarCantidadProducto()
+        this.aumentarCantidadProducto() 
+
+        let totalCarritoElement = document.getElementById("totalCarrito");
+        totalCarritoElement.textContent = `$${this.calcularTotal()}`;
+    
+    }
+
+    eliminarEvento(){
         this.listaDeCompras.forEach(producto => {
             const btn_eliminar = document.getElementById(`ep-${producto.id}`)
             btn_eliminar.addEventListener("click", () => {
                 this.eliminar(producto)
                 this.guardarEnStorage()
                 this.mostrarEnCarrito()
+                
             })
         })
-        let totalCarritoElement = document.getElementById("totalCarrito");
-        totalCarritoElement.textContent = `$${this.calcularTotal()}`;
-    
     }
 }
 
@@ -148,6 +192,9 @@ class ProductController {
 const carrito = new CarritoCompraCADEP();
 carrito.recuperarStorage(); 
 carrito.mostrarEnCarrito();
+carrito.eliminarCantidadProducto()
+carrito.aumentarCantidadProducto()
+
 
 const cp = new ProductController();
 cp.updateProduct();
