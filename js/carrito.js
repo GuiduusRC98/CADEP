@@ -19,7 +19,7 @@ class Producto {
                     <div class="card-body">
                         <h5 class="card-title">${this.nombre}</h5>
                         <p class="card-text">Cantidad: ${this.cantidad}</p>
-                        <p class="card-text">Precio: ${this.precio}</p>
+                        <p class="card-text">Precio: $${this.precio}</p>
                         <button class="btn btn-danger" id="ep-${this.id}">
                             <i class="fas fa-times"></i> Eliminar
                         </button>
