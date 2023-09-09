@@ -5,6 +5,24 @@ body {
   overflow-x: hidden;
 }
 
+.margin-card{
+  margin: 15px;
+}
+
+.cart-count {
+  position: absolute;
+  top: 25px; 
+  right: 125px;
+  background-color: red; 
+  color: white;
+  border-radius: 50%; 
+  width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  text-align: center;
+  line-height: 20px; /* Alinea verticalmente el número en el centro del círculo */
+  font-size: 12px; /* Tamaño de fuente del número */
+  font-weight: bold; /* Texto en negrita */
+}
 .layout_padding {
   padding: 90px 0;
 }

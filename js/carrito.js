@@ -20,7 +20,7 @@ class Producto {
 
     descripcionCarrito() {
         return `
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card md-4" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="${this.img}" class="img-fluid rounded-start" alt="${this.nombre}">
@@ -129,19 +129,38 @@ class CarritoCompraCADEP {
 
     mostrarEnCarrito() {
         let contenedor_carrito = document.getElementById("contenedor_carrito");
-        contenedor_carrito.innerHTML = ""
+        contenedor_carrito.innerHTML = "";
         this.listaDeCompras.forEach(producto => {
-            contenedor_carrito.innerHTML += producto.descripcionCarrito();
-        })
-
-        this.eliminarEvento()
-        this.eliminarCantidadProducto()
-        this.aumentarCantidadProducto() 
-
+          contenedor_carrito.innerHTML += producto.descripcionCarrito();
+        });
+      
+        this.eliminarEvento();
+        this.eliminarCantidadProducto();
+        this.aumentarCantidadProducto();
+      
         let totalCarritoElement = document.getElementById("totalCarrito");
         totalCarritoElement.textContent = `$${this.calcularTotal()}`;
+      
+        // Obtén el elemento cart-count
+        let cartCountElement = document.getElementById("cart-count");
+      
+        // Obtén la cantidad total de productos en el carrito
+        const totalCantidad = this.listaDeCompras.reduce(
+          (total, producto) => total + producto.cantidad,
+          0
+        );
+      
+        // Actualiza el contenido solo si la cantidad total es mayor que cero
+        if (totalCantidad > 0) {
+          cartCountElement.style.display = "block"; // Muestra el elemento
+          cartCountElement.textContent = totalCantidad; // Actualiza el contenido
+        } else {
+          cartCountElement.style.display = "none"; // Oculta el elemento si la cantidad es cero
+        }
+      }
+
     
-    }
+    
 
     eliminarEvento(){
         this.listaDeCompras.forEach(producto => {
@@ -199,3 +218,9 @@ carrito.aumentarCantidadProducto()
 const cp = new ProductController();
 cp.updateProduct();
 cp.mostrar();
+btn_ap.addEventListener("click", () => {
+    carrito.agregar(producto);
+    carrito.guardarEnStorage();
+    carrito.mostrarEnCarrito();
+    updateCartCount();
+});
