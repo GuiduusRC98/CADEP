@@ -7,7 +7,7 @@ class Producto {
         this.cantidad = cantidad;
         this.img = img;
     }
-
+/////// funciones para sumar o restar cantidad del producto en el modal del carrito ///////
     anadirCantidad(){
         this.cantidad++
     }
@@ -141,21 +141,18 @@ class CarritoCompraCADEP {
         let totalCarritoElement = document.getElementById("totalCarrito");
         totalCarritoElement.textContent = `$${this.calcularTotal()}`;
       
-        // Obtén el elemento cart-count
         let cartCountElement = document.getElementById("cart-count");
       
-        // Obtén la cantidad total de productos en el carrito
         const totalCantidad = this.listaDeCompras.reduce(
           (total, producto) => total + producto.cantidad,
           0
         );
       
-        // Actualiza el contenido solo si la cantidad total es mayor que cero
         if (totalCantidad > 0) {
-          cartCountElement.style.display = "block"; // Muestra el elemento
-          cartCountElement.textContent = totalCantidad; // Actualiza el contenido
+          cartCountElement.style.display = "block"; /////// muestra el circulo rojo ///////
+          cartCountElement.textContent = totalCantidad; /////// muestra la cantidad ///////
         } else {
-          cartCountElement.style.display = "none"; // Oculta el elemento si la cantidad es cero
+          cartCountElement.style.display = "none"; /////// si es 0 desaparece el circulo///////
         }
       }
 
