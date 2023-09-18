@@ -7,7 +7,7 @@ class Producto {
         this.cantidad = cantidad;
         this.img = img;
     }
-/////// funciones para sumar o restar cantidad del producto en el modal del carrito ///////
+
     anadirCantidad(){
         this.cantidad++
     }
@@ -80,18 +80,39 @@ class CarritoCompraCADEP {
     }
 
     recuperarStorage() {
-        let listaCarritoJSON = localStorage.getItem("listaCarrito");
-        let listaCarritoJS = JSON.parse(listaCarritoJSON);
-        let listaAux = [];
+        let listaCarritoJSON = localStorage.getItem("listaCarrito")
+        let listaCarritoJS = JSON.parse(listaCarritoJSON)
+        let listaAux = []
         if (listaCarritoJS) {
             listaCarritoJS.forEach(producto => {
                 let nuevoProducto = new Producto(producto.id, producto.nombre, producto.precio, producto.descripcionProducto, producto.img, producto.cantidad);
                 listaAux.push(nuevoProducto);
-            });
+            })
             this.listaDeCompras = listaAux;
         }
     }
 
+    finalizarCompra() {
+        const finalizar_compra = document.getElementById("finalizar_compra");
+      
+        finalizar_compra.addEventListener("click", () => {
+            if (this.listaDeCompras.length > 0) {
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: '¡compra finalizada!',
+              text: `El total de tu compra es $${this.calcularTotal()}`,
+              showConfirmButton: false,
+              timer: 2500
+            });
+            localStorage.removeItem("listaCarrito");
+            this.listaDeCompras = [];
+            this.mostrarEnCarrito();
+          } else {
+            Swal.fire('No tienes productos en el carrito.');
+          }
+        });
+      }
     calcularTotal() {
         let total = 0;
         this.listaDeCompras.forEach(producto => {
@@ -141,24 +162,23 @@ class CarritoCompraCADEP {
         let totalCarritoElement = document.getElementById("totalCarrito");
         totalCarritoElement.textContent = `$${this.calcularTotal()}`;
       
+        // Obtén el elemento cart-count
         let cartCountElement = document.getElementById("cart-count");
       
+        // Obtén la cantidad total de productos en el carrito
         const totalCantidad = this.listaDeCompras.reduce(
           (total, producto) => total + producto.cantidad,
           0
         );
       
+        // Actualiza el contenido solo si la cantidad total es mayor que cero
         if (totalCantidad > 0) {
-          cartCountElement.style.display = "block"; /////// muestra el circulo rojo ///////
-          cartCountElement.textContent = totalCantidad; /////// muestra la cantidad ///////
+          cartCountElement.style.display = "block"; // Muestra el elemento
+          cartCountElement.textContent = totalCantidad; // Actualiza el contenido
         } else {
-          cartCountElement.style.display = "none"; /////// si es 0 desaparece el circulo///////
+          cartCountElement.style.display = "none"; // Oculta el elemento si la cantidad es cero
         }
       }
-
-    
-    
-
     eliminarEvento(){
         this.listaDeCompras.forEach(producto => {
             const btn_eliminar = document.getElementById(`ep-${producto.id}`)
@@ -210,14 +230,9 @@ carrito.recuperarStorage();
 carrito.mostrarEnCarrito();
 carrito.eliminarCantidadProducto()
 carrito.aumentarCantidadProducto()
+carrito.finalizarCompra()
 
 
 const cp = new ProductController();
 cp.updateProduct();
 cp.mostrar();
-btn_ap.addEventListener("click", () => {
-    carrito.agregar(producto);
-    carrito.guardarEnStorage();
-    carrito.mostrarEnCarrito();
-    updateCartCount();
-});

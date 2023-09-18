@@ -60,6 +60,9 @@
     <link href="../css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="../css/responsive.css" rel="stylesheet" />
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js
+"></script>
   </head>
 
   <body>
@@ -169,10 +172,18 @@
                           <button
                             type="button"
                             class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
+                            data-bs-dismiss="modal">
                             cerrar
                           </button>
+                          <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-dismiss="modal"
+                          id="finalizar_compra"
+                          
+                        >
+                          Finalizar compra
+                        </button>
                           <h4>Total:</h4><span id="totalCarrito"></span>
                         </div>
                       </div>
@@ -192,6 +203,7 @@
             </nav>
           </div>
         </div>
+      
         <script>
           // Función para cambiar el estado del menú de hamburguesa al hacer clic
           function toggleMenu() {
@@ -215,6 +227,7 @@
           });
         </script>
       </header>
+    </div>
       <!-- end header section -->
       <!-- Tienda -->
       <div class="d-flex justify-content-center align-items-center">
@@ -274,6 +287,10 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js
+"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/carrito.js"></script>
 </body>
 </html>
