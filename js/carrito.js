@@ -208,14 +208,14 @@ class ProductController {
             const resp = await fetch('../ListaProductos.json');
             const data = await resp.json();
 
-            this.listaDeProducto = data.map(productoData => {
+            this.listaDeProducto = data.map(Producto => {
                 return new Producto(
-                    productoData.id,
-                    productoData.nombre,
-                    productoData.precio,
-                    productoData.descripcionProducto,
-                    productoData.img,
-                    productoData.cantidad
+                    this.id,
+                    this.nombre,
+                    this.precio,
+                    this.descripcionProducto,
+                    this.img,
+                    this.cantidad
                 );
             });
 
@@ -224,6 +224,7 @@ class ProductController {
             console.error("Error al cargar productos:", error);
         }
     }
+
 
     mostrar() {
         let contenedor_productos = document.getElementById("contenedor_productos");
