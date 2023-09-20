@@ -205,7 +205,7 @@ class ProductController {
 
     async cargarProductosDesdeJSON() {
         try {
-            const resp = await fetch('./listaProductos.json');
+            const resp = await fetch('./listaProducto.json');
             const data = await resp.json();
 
             this.listaDeProducto = data.map(productoData => {
