@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "nombre": "CAMISETA NEGRA ARBITRO ATHIX OFICIAL AFA 2022/23",
+      "precio": 15490,
+      "descripcion": "Camiseta de Arbitro",
+      "imagen": "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/athix-celeste-indu1-a1517af40a048358a216633833408583-480-0.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "MEDIAS ATHIX OFICIAL",
+      "precio": 3490,
+      "descripcion": "Medias de Arbitro",
+      "imagen": "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/medias-negras-athix1-5a533c243a851eac8016635264960961-320-0.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "SHORT ATHIX OFICIAL AFA 2022/23",
+      "precio": 12490,
+      "descripcion": "Short de Arbitro",
+      "imagen": "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/short-athix-11-178f425e55342724c416635261647716-320-0.jpg"
+    }
+  ]
+  

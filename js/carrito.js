@@ -192,6 +192,8 @@ class CarritoCompraCADEP {
     }
 }
 
+
+
 class ProductController {
     constructor() {
         this.listaDeProducto = [];
@@ -201,14 +203,32 @@ class ProductController {
         this.listaDeProducto.push(producto);
     }
 
-    updateProduct() {
-        this.agregar(new Producto(1, "CAMISETA NEGRA ARBITRO ATHIX OFICIAL AFA 2022/23", 15490, "Camiseta de Arbitro", "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/athix-celeste-indu1-a1517af40a048358a216633833408583-480-0.jpg"));
-        this.agregar(new Producto(2, "MEDIAS ATHIX OFICIAL", 3490, "Medias de Arbitro", "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/medias-negras-athix1-5a533c243a851eac8016635264960961-320-0.jpg"));
-        this.agregar(new Producto(3, "SHORT ATHIX OFICIAL AFA 2022/23", 12490, "Short de Arbitro", "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/short-athix-11-178f425e55342724c416635261647716-320-0.jpg"));
+    async cargarProductosDesdeJSON() {
+        try {
+            const resp = await fetch('../ListaProductos.json');
+            const data = await resp.json();
+
+            this.listaDeProducto = data.map(productoData => {
+                return new Producto(
+                    productoData.id,
+                    productoData.nombre,
+                    productoData.precio,
+                    productoData.descripcionProducto,
+                    productoData.img,
+                    productoData.cantidad
+                );
+            });
+
+            this.mostrar();
+        } catch (error) {
+            console.error("Error al cargar productos:", error);
+        }
     }
 
     mostrar() {
         let contenedor_productos = document.getElementById("contenedor_productos");
+        contenedor_productos.innerHTML = ""; // Limpia el contenido previo
+
         this.listaDeProducto.forEach(producto => {
             contenedor_productos.innerHTML += producto.descripcion_Producto();
         });
@@ -225,6 +245,28 @@ class ProductController {
     }
 }
 
+/*     updateProduct() {
+        this.agregar(new Producto(1, "CAMISETA NEGRA ARBITRO ATHIX OFICIAL AFA 2022/23", 15490, "Camiseta de Arbitro", "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/athix-celeste-indu1-a1517af40a048358a216633833408583-480-0.jpg"));
+        this.agregar(new Producto(2, "MEDIAS ATHIX OFICIAL", 3490, "Medias de Arbitro", "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/medias-negras-athix1-5a533c243a851eac8016635264960961-320-0.jpg"));
+        this.agregar(new Producto(3, "SHORT ATHIX OFICIAL AFA 2022/23", 12490, "Short de Arbitro", "https://d2r9epyceweg5n.cloudfront.net/stores/002/419/855/products/short-athix-11-178f425e55342724c416635261647716-320-0.jpg"));
+    } */
+/*     mostrar() {
+        let contenedor_productos = document.getElementById("contenedor_productos");
+        this.listaDeProducto.forEach(producto => {
+            contenedor_productos.innerHTML += producto.descripcion_Producto();
+        });
+
+        this.listaDeProducto.forEach(producto => {
+            const btn_ap = document.getElementById(`ap-${producto.id}`);
+
+            btn_ap.addEventListener("click", () => {
+                carrito.agregar(producto);
+                carrito.guardarEnStorage();
+                carrito.mostrarEnCarrito();
+            });
+        });
+    } */
+
 const carrito = new CarritoCompraCADEP();
 carrito.recuperarStorage(); 
 carrito.mostrarEnCarrito();
@@ -234,5 +276,5 @@ carrito.finalizarCompra()
 
 
 const cp = new ProductController();
-cp.updateProduct();
+cp.cargarProductosDesdeJSON();
 cp.mostrar();
