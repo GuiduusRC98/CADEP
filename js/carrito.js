@@ -205,17 +205,17 @@ class ProductController {
 
     async cargarProductosDesdeJSON() {
         try {
-            const resp = await fetch('../ListaProductos.json');
+            const resp = await fetch('./listaProductos.json');
             const data = await resp.json();
 
-            this.listaDeProducto = data.map(Producto => {
+            this.listaDeProducto = data.map(productoData => {
                 return new Producto(
-                    this.id,
-                    this.nombre,
-                    this.precio,
-                    this.descripcionProducto,
-                    this.img,
-                    this.cantidad
+                    productoData.id,
+                    productoData.nombre,
+                    productoData.precio,
+                    productoData.descripcionProducto,
+                    productoData.img,
+                    productoData.cantidad
                 );
             });
 
@@ -225,10 +225,9 @@ class ProductController {
         }
     }
 
-
     mostrar() {
         let contenedor_productos = document.getElementById("contenedor_productos");
-        contenedor_productos.innerHTML = ""; // Limpia el contenido previo
+        contenedor_productos.innerHTML = "";
 
         this.listaDeProducto.forEach(producto => {
             contenedor_productos.innerHTML += producto.descripcion_Producto();
