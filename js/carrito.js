@@ -3,6 +3,7 @@ class Producto {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
+        this.talles = ["S", "M", "L", "XL"];
         this.descripcionProducto = descripcionProducto;
         this.cantidad = cantidad;
         this.img = img;
@@ -50,7 +51,12 @@ class Producto {
             <div class="card-body">
                 <h5 class="card-title">${this.nombre}</h5>
                 <p class="card-text">${this.descripcionProducto}</p>
+                
                 <p class="card-text">$${this.precio}</p>
+                <label for="talla">Selecciona la talla:</label>
+                <select id="talla" name="talla">
+                <option value="${talla}">${talla}</option>
+                </select>
                 <button class="btn btn-primary" id="ap-${this.id}">Añadir al carrito</button>
             </div>
         </div>`;
@@ -213,6 +219,7 @@ class ProductController {
                     productoData.id,
                     productoData.nombre,
                     productoData.precio,
+                    productoData.talles,
                     productoData.descripcionProducto,
                     productoData.img,
                     productoData.cantidad
