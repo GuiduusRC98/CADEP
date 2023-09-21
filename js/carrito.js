@@ -203,46 +203,44 @@ class ProductController {
     }
 
     async cargarProductosDesdeJSON() {
-        try {
             const resp = await fetch('../listaProducto.json');
             const data = await resp.json();
 
-            this.listaDeProducto = data.map(productoData => {
-                return new Producto(
-                    productoData.id,
-                    productoData.nombre,
-                    productoData.precio,
-                    productoData.descripcionProducto,
-                    productoData.img,
-                    productoData.cantidad
-                );
-            });
+            this.listaDeProducto = data.forEach(producto => {
+                contenedor_productos.innerHTML += producto.descripcion_Producto()
+        })
 
-            this.mostrar();
-        } catch (error) {
-            console.error("Error al cargar productos:", error);
-        }
-    }
-
-    mostrar() {
-        let contenedor_productos = document.getElementById("contenedor_productos");
-        contenedor_productos.innerHTML = "";
-
-        this.listaDeProducto.forEach(producto => {
-            contenedor_productos.innerHTML += producto.descripcion_Producto();
-        });
-
-        this.listaDeProducto.forEach(producto => {
-            const btn_ap = document.getElementById(`ap-${producto.id}`);
+        this.listaDeProducto = data.forEach(producto => {
+            const btn_ap = document.getElementById(`ap-${producto.id}`)
 
 
             btn_ap.addEventListener("click", () => {
                 carrito.agregar(producto);
                 carrito.guardarEnStorage();
                 carrito.mostrarEnCarrito();
-            });
-        });
+            })
+        })
     }
+
+/*     mostrar() {
+        let contenedor_productos = document.getElementById("contenedor_productos")
+        contenedor_productos.innerHTML = "";
+
+        this.listaDeProducto.forEach(producto => {
+            contenedor_productos.innerHTML += producto.descripcion_Producto()
+        })
+
+        this.listaDeProducto.forEach(producto => {
+            const btn_ap = document.getElementById(`ap-${producto.id}`)
+
+
+            btn_ap.addEventListener("click", () => {
+                carrito.agregar(producto);
+                carrito.guardarEnStorage();
+                carrito.mostrarEnCarrito();
+            })
+        })
+    } */
 }
 
 
