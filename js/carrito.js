@@ -55,7 +55,7 @@ class Producto {
                 <p class="card-text">$${this.precio}</p>
                 <label for="talla">Selecciona la talla:</label>
                 <select id="talla" name="talla">
-                <option value="${talla}">${talla}</option>
+                <option value="">${talles}</option>
                 </select>
                 <button class="btn btn-primary" id="ap-${this.id}">Añadir al carrito</button>
             </div>
