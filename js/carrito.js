@@ -3,6 +3,7 @@ class Producto {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
+        this.talles = ["S", "M", "L", "XL"];
         this.descripcionProducto = descripcionProducto;
         this.cantidad = cantidad;
         this.img = img;
@@ -33,7 +34,7 @@ class Producto {
                         ${this.cantidad}
                         <button class="btn btn-orange" id="aumentar-${this.id}"><i class="fa-solid fa-plus"></i></button>
                         </p>
-                        
+                        <p class="card-text">Talle: $${this.talles}</p>
                         <p class="card-text">Precio: $${this.precio}</p>
                         <button class="btn btn-danger" id="ep-${this.id}">
                             <i class="fas fa-times"></i> Eliminar
@@ -51,7 +52,12 @@ class Producto {
             <div class="card-body">
                 <h5 class="card-title">${this.nombre}</h5>
                 <p class="card-text">${this.descripcionProducto}</p>
-                
+                <div class="form-group">
+                    <label for="talla-${this.id}">Selecciona la talla:</label>
+                    <select id="talla-${this.id}" class="form-control">
+                        ${this.talles.map(talla => `<option value="${talla}">${talla}</option>`).join('')}
+                    </select>
+                </div>
                 <p class="card-text">$${this.precio}</p>
                 <button class="btn btn-primary" id="ap-${this.id}">Añadir al carrito</button>
             </div>
@@ -87,7 +93,7 @@ class CarritoCompraCADEP {
         let listaAux = []
         if (listaCarritoJS) {
             listaCarritoJS.forEach(producto => {
-                let nuevoProducto = new Producto(producto.id, producto.nombre, producto.precio, producto.descripcionProducto, producto.img, producto.cantidad);
+                let nuevoProducto = new Producto(producto.id, producto.nombre, producto.precio, producto.talles, producto.descripcionProducto, producto.img, producto.cantidad);
                 listaAux.push(nuevoProducto);
             })
             this.listaDeCompras = listaAux;
@@ -238,8 +244,11 @@ class ProductController {
 
         this.listaDeProducto.forEach(producto => {
             const btn_ap = document.getElementById(`ap-${producto.id}`);
+            const selectTalla = document.getElementById(`talla-${producto.id}`);
+
 
             btn_ap.addEventListener("click", () => {
+                producto.tallaSeleccionada = selectTalla.value;
                 carrito.agregar(producto);
                 carrito.guardarEnStorage();
                 carrito.mostrarEnCarrito();
