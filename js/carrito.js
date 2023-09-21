@@ -4,6 +4,7 @@ class Producto {
         this.nombre = nombre;
         this.precio = precio;
         this.talles = ["S", "M", "L", "XL"];
+        this.tallaSeleccionada = "S";
         this.descripcionProducto = descripcionProducto;
         this.cantidad = cantidad;
         this.img = img;
@@ -22,26 +23,32 @@ class Producto {
     descripcionCarrito() {
         return `
         <div class="card md-4" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="${this.img}" class="img-fluid rounded-start" alt="${this.nombre}">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">${this.nombre}</h5>
-                        <p class="card-text">Cantidad: 
-                        <button class="btn btn-orange" id="desminuir-${this.id}"><i class="fa-solid fa-minus"></i></button>
-                        ${this.cantidad}
-                        <button class="btn btn-orange" id="aumentar-${this.id}"><i class="fa-solid fa-plus"></i></button>
-                        </p>
-                        <p class="card-text">Precio: $${this.precio}</p>
-                        <button class="btn btn-danger" id="ep-${this.id}">
-                            <i class="fas fa-times"></i> Eliminar
-                        </button>
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${this.img}" class="img-fluid rounded-start" alt="${this.nombre}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${this.nombre}</h5>
+                    <p class="card-text">Cantidad: 
+                    <button class="btn btn-orange" id="desminuir-${this.id}"><i class="fa-solid fa-minus"></i></button>
+                    ${this.cantidad}
+                    <button class="btn btn-orange" id="aumentar-${this.id}"><i class="fa-solid fa-plus"></i></button>
+                    </p>
+                    <p class="card-text">Precio: $${this.precio}</p>
+                    <div class="form-group">
+                        <label for="talla-${this.id}">Selecciona la talla:</label>
+                        <select id="talla-${this.id}" class="form-control">
+                            ${this.talles.map(talla => `<option value="${talla}">${talla}</option>`).join('')}
+                        </select>
                     </div>
+                    <button class="btn btn-danger" id="ep-${this.id}">
+                        <i class="fas fa-times"></i> Eliminar
+                    </button>
                 </div>
             </div>
-        </div>`;
+        </div>
+    </div>`;
     }
 
     descripcion_Producto() {
@@ -51,12 +58,13 @@ class Producto {
             <div class="card-body">
                 <h5 class="card-title">${this.nombre}</h5>
                 <p class="card-text">${this.descripcionProducto}</p>
-                
                 <p class="card-text">$${this.precio}</p>
-                <label for="talla">Selecciona la talla:</label>
-                <select id="talla" name="talla">
-                <option value="">${talles}</option>
-                </select>
+                <div class="form-group">
+                    <label for="talla-${this.id}">Selecciona la talla:</label>
+                    <select id="talla-${this.id}" class="form-control">
+                        ${this.talles.map(talla => `<option value="${talla}">${talla}</option>`).join('')}
+                    </select>
+                </div>
                 <button class="btn btn-primary" id="ap-${this.id}">Añadir al carrito</button>
             </div>
         </div>`;
@@ -168,21 +176,21 @@ class CarritoCompraCADEP {
         let totalCarritoElement = document.getElementById("totalCarrito");
         totalCarritoElement.textContent = `$${this.calcularTotal()}`;
       
-        // Obtén el elemento cart-count
+
         let cartCountElement = document.getElementById("cart-count");
       
-        // Obtén la cantidad total de productos en el carrito
+
         const totalCantidad = this.listaDeCompras.reduce(
           (total, producto) => total + producto.cantidad,
           0
         );
       
-        // Actualiza el contenido solo si la cantidad total es mayor que cero
+        
         if (totalCantidad > 0) {
-          cartCountElement.style.display = "block"; // Muestra el elemento
-          cartCountElement.textContent = totalCantidad; // Actualiza el contenido
+          cartCountElement.style.display = "block";
+          cartCountElement.textContent = totalCantidad; 
         } else {
-          cartCountElement.style.display = "none"; // Oculta el elemento si la cantidad es cero
+          cartCountElement.style.display = "none"; 
         }
       }
     eliminarEvento(){
@@ -242,12 +250,15 @@ class ProductController {
 
         this.listaDeProducto.forEach(producto => {
             const btn_ap = document.getElementById(`ap-${producto.id}`);
+            const selectTalla = document.getElementById(`talla-${producto.id}`);
 
             btn_ap.addEventListener("click", () => {
+                producto.tallaSeleccionada = selectTalla.value;
                 carrito.agregar(producto);
                 carrito.guardarEnStorage();
                 carrito.mostrarEnCarrito();
             });
+            selectTalla.value = producto.tallaSeleccionada;
         });
     }
 }
