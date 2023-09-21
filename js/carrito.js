@@ -201,20 +201,32 @@ class ProductController {
     }
 
     async cargarProductosDesdeJSON() {
-            const resp = await fetch('../listaProducto.json')
-            const dataproducto = await resp.json()
-            mostrarProductosEnDom(dataproducto)
-    }
+        const resp = await fetch('../listaProducto.json');
+        const data = await resp.json();
 
-    mostrarProductosEnDom(listaDeProducto) {
+        this.listaDeProducto = data.map(productoData => {
+            return new Producto(
+                productoData.id,
+                productoData.nombre,
+                productoData.precio,
+                productoData.descripcionProducto,
+                productoData.img,
+                productoData.cantidad
+            )
+        })
+
+        this.mostrarProductosEnDom()
+}
+
+    mostrarProductosEnDom() {
         let contenedor_productos = document.getElementById("contenedor_productos")
         contenedor_productos.innerHTML = ""
 
-        listaDeProducto.forEach(producto => {
+        this.listaDeProducto.forEach(producto => {
             contenedor_productos.innerHTML += producto.descripcion_Producto()
         })
 
-        listaDeProducto.forEach(producto => {
+        this.listaDeProducto.forEach(producto => {
             const btn_ap = document.getElementById(`ap-${producto.id}`)
 
 
