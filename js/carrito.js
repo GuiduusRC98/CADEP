@@ -53,7 +53,7 @@ class Producto {
             <div class="card-body">
                 <h5 class="card-title">${this.nombre}</h5>
                 <select id="select-talle-${this.id}">
-                 ${this.talles.map((talle) => `<option value="${talle}">${talle}</option>`).join('')}
+                 ${this.talles.map((talles) => `<option value="${talles}">${talles}</option>`).join('')}
                 </select>
                 <p class="card-text">${this.descripcionProducto}</p>
                 <p class="card-text">$${this.precio}</p>
