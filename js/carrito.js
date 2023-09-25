@@ -208,7 +208,9 @@ class ProductController {
         const resp = await fetch('../listaProducto.json');
         const data = await resp.json();
 
-        mostrarProductosEnDom(data)
+        this.listaDeProducto = data.forEach(listaDeProducto => {
+            this.mostrarProductosEnDom() })
+
         
     }
 
