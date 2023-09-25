@@ -1,20 +1,30 @@
 class Producto {
-    constructor(id, nombre, precio, descripcionProducto, img, cantidad=1) {
-        this.id = id
-        this.nombre = nombre
-        this.precio = precio
-        this.descripcionProducto = descripcionProducto
-        this.cantidad = cantidad
-        this.img = img
+    constructor(id, nombre, precio, descripcionProducto, img, cantidad = 1, talles = ["S", "M", "L", "XL"]) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcionProducto = descripcionProducto;
+        this.cantidad = cantidad;
+        this.img = img;
+        this.talleSeleccionado = "S"; // Inicialmente, el talle es "S"
+        this.talles = talles;
     }
 
-    anadirCantidad(){
-        this.cantidad++
+    anadirCantidad() {
+        this.cantidad++;
     }
 
-    quitarCantidad(){
-        if(this.cantidad >1){
-            this.cantidad--
+    quitarCantidad() {
+        if (this.cantidad > 1) {
+            this.cantidad--;
+        }
+    }
+
+    setTalle(talle) {
+        if (this.talles.includes(talle)) {
+            this.talleSeleccionado = talle;
+        } else {
+            console.error("El talle seleccionado no está disponible.");
         }
     }
 
@@ -28,6 +38,7 @@ class Producto {
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">${this.nombre}</h5>
+                        <p class="card-text">Talle: ${this.talleSeleccionado}</p>
                         <p class="card-text">Cantidad: 
                         <button class="btn btn-orange" id="desminuir-${this.id}"><i class="fa-solid fa-minus"></i></button>
                         ${this.cantidad}
@@ -44,6 +55,8 @@ class Producto {
     }
 
     descripcion_Producto() {
+        const talleOptions = this.talles.map(talle => `<option value="${talle}">${talle}</option>`).join('');
+
         return `
         <div class="card border-light" style="width: 18rem;">
             <img src="${this.img}" class="card-img-top" alt="${this.nombre}">
@@ -51,11 +64,16 @@ class Producto {
                 <h5 class="card-title">${this.nombre}</h5>
                 <p class="card-text">${this.descripcionProducto}</p>
                 <p class="card-text">$${this.precio}</p>
+                <label for="talle-${this.id}">Talle:</label>
+                <select class="form-select" id="talle-${this.id}">
+                    ${talleOptions}
+                </select>
                 <button class="btn btn-primary" id="ap-${this.id}">Añadir al carrito</button>
             </div>
         </div>`;
     }
 }
+
 
 class CarritoCompraCADEP {
     constructor() {
@@ -220,9 +238,12 @@ class ProductController {
 
         this.listaDeProducto.forEach(producto => {
             const btn_ap = document.getElementById(`ap-${producto.id}`)
+            const talleSelect = document.getElementById(`talle-${producto.id}`);
+            const talleSeleccionado = talleSelect.value;
 
 
             btn_ap.addEventListener("click", () => {
+                producto.setTalle(talleSeleccionado);
                 carrito.agregar(producto)
                 carrito.guardarEnStorage()
                 carrito.mostrarEnCarrito()
