@@ -195,8 +195,6 @@ class CarritoCompraCADEP {
     }
 }
 
-
-
 class ProductController {
     constructor() {
         this.listaDeProducto = [];
@@ -210,13 +208,11 @@ class ProductController {
         const resp = await fetch('../listaProducto.json');
         const data = await resp.json();
 
-        this.listaDeProducto = data.forEach(listaDeProducto => {
-            this.mostrarProductosEnDom() })
-
+        mostrarProductosEnDom(data)
         
-}
+    }
 
-mostrarProductosEnDom() {
+    mostrarProductosEnDom() {
     let contenedor_productos = document.getElementById("contenedor_productos")
     contenedor_productos.innerHTML = ""
 
@@ -237,7 +233,7 @@ mostrarProductosEnDom() {
             carrito.mostrarEnCarrito()
         })
     })
-}
+    }
 
 }
 
