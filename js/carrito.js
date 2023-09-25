@@ -205,21 +205,38 @@ class ProductController {
     }
 
     async cargarProductosDesdeJSON() {
-        const resp = await fetch('../listaProducto.json');
-        const data = await resp.json();
+        try{
+            const resp = await fetch('../listaProducto.json')
+            if(!resp.ok){
+                throw new Error('No se pudo cargar el archivo JSON')
+            }
+            const data = await resp.json()
 
-        this.listaDeProducto = data.forEach(listaDeProducto => {
-            this.mostrarProductosEnDom() })
+            this.listaDeProducto = data
 
-        
+            console.log(this.listaDeProducto)
+        }catch (error) {
+            console.error('Error al cargar los productor:', error)
+        }
     }
 
     mostrarProductosEnDom() {
     let contenedor_productos = document.getElementById("contenedor_productos")
     contenedor_productos.innerHTML = ""
 
-    this.listaDeProducto.forEach(producto => {
-        contenedor_productos.innerHTML += producto.descripcion_Producto()
+    this.listaDeProducto.forEach(productoData => {
+
+        const producto = new Producto(
+            productoData.id,
+            productoData.nombre,
+            productoData.precio,
+            productoData.descripcionProducto,
+            productoData.img,
+            productoData.cantidad,
+        )
+        const div = document.createElement("div")
+        div.innerHTML = producto.descripcion_Producto()
+        contenedor_productos.appendChild(div)
 
         
         const selectTalle = document.getElementById(`select-talle-${producto.id}`)
@@ -241,12 +258,19 @@ class ProductController {
 
 
 const carrito = new CarritoCompraCADEP()
-carrito.recuperarStorage()
-carrito.mostrarEnCarrito()
-carrito.eliminarCantidadProducto()
-carrito.aumentarCantidadProducto()
-carrito.finalizarCompra()
-
 
 const cp = new ProductController()
-cp.cargarProductosDesdeJSON()
+
+cp.cargarProductosDesdeJSON().then(() =>{
+    cp.mostrarProductosEnDom()
+    carrito.recuperarStorage()
+    carrito.mostrarEnCarrito()
+    carrito.eliminarCantidadProducto()
+    carrito.aumentarCantidadProducto()
+    carrito.finalizarCompra()
+})
+
+
+
+
+
