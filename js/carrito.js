@@ -1,11 +1,13 @@
 class Producto {
-    constructor(id, nombre, precio, descripcionProducto, img, cantidad=1) {
+    constructor(id, nombre, precio, descripcionProducto, img, cantidad=1, talles=["S", "M", "L", "XL"], talleSeleccionado="S") {
         this.id = id
         this.nombre = nombre
         this.precio = precio
         this.descripcionProducto = descripcionProducto
         this.cantidad = cantidad
         this.img = img
+        this.talles = talles
+        this.talleSeleccionado = talleSeleccionado
     }
 
     anadirCantidad(){
@@ -28,6 +30,7 @@ class Producto {
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">${this.nombre}</h5>
+                        <p class="card-text">Talles: ${this.talleSeleccionado}</p>
                         <p class="card-text">Cantidad: 
                         <button class="btn btn-orange" id="desminuir-${this.id}"><i class="fa-solid fa-minus"></i></button>
                         ${this.cantidad}
@@ -49,6 +52,9 @@ class Producto {
             <img src="${this.img}" class="card-img-top" alt="${this.nombre}">
             <div class="card-body">
                 <h5 class="card-title">${this.nombre}</h5>
+                <select id="select-talle-${this.id}">
+                 ${this.talles.map((talle) => `<option value="${talle}">${talle}</option>`).join('')}
+                </select>
                 <p class="card-text">${this.descripcionProducto}</p>
                 <p class="card-text">$${this.precio}</p>
                 <button class="btn btn-primary" id="ap-${this.id}">Añadir al carrito</button>
@@ -210,25 +216,29 @@ class ProductController {
         
 }
 
-    mostrarProductosEnDom() {
-        let contenedor_productos = document.getElementById("contenedor_productos")
-        contenedor_productos.innerHTML = ""
+mostrarProductosEnDom() {
+    let contenedor_productos = document.getElementById("contenedor_productos")
+    contenedor_productos.innerHTML = ""
 
-        this.listaDeProducto.forEach(producto => {
-            contenedor_productos.innerHTML += producto.descripcion_Producto()
+    this.listaDeProducto.forEach(producto => {
+        contenedor_productos.innerHTML += producto.descripcion_Producto()
+
+        
+        const selectTalle = document.getElementById(`select-talle-${producto.id}`)
+        selectTalle.addEventListener('change', (event) => {
+            producto.talleSeleccionado = event.target.value
         })
 
-        this.listaDeProducto.forEach(producto => {
-            const btn_ap = document.getElementById(`ap-${producto.id}`)
+        const btn_ap = document.getElementById(`ap-${producto.id}`)
 
-
-            btn_ap.addEventListener("click", () => {
-                carrito.agregar(producto)
-                carrito.guardarEnStorage()
-                carrito.mostrarEnCarrito()
-            })
+        btn_ap.addEventListener("click", () => {
+            carrito.agregar(producto)
+            carrito.guardarEnStorage()
+            carrito.mostrarEnCarrito()
         })
-    }
+    })
+}
+
 }
 
 
